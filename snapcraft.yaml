@@ -1,0 +1,27 @@
+name: opennms-minion
+base: core18
+version: '25.1.1'
+summary: OpenNMS Horizon Minion application for distributed monitoring
+description: |
+  OpenNMS Horizon is an enteprise grad open source network monitoring tool. The 
+  Minion is the distributed network monitoring component allows monitoring of
+  isolated network areas which can't be reached from a central OpenNMS Horizon
+  instance.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+architectures:
+  - build-on: amd64
+    run-on: amd64
+
+parts:
+  minion:
+    plugin: dump
+    source: https://github.com/OpenNMS/opennms/releases/download/opennms-$SNAPCRAFT_PROJECT_VERSION-1/minion-$SNAPCRAFT_PROJECT_VERSION.tar.gz
+    stage-packages:
+      - openjdk-11-jdk
+
+apps:
+  minion:
+    command: bin/karaf server
