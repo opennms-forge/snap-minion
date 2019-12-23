@@ -20,7 +20,7 @@ parts:
     plugin: dump
     source: https://github.com/OpenNMS/opennms/releases/download/opennms-$SNAPCRAFT_PROJECT_VERSION-1/minion-$SNAPCRAFT_PROJECT_VERSION.tar.gz
     stage-packages:
-      - openjdk-11-jdk
+      - openjdk-11-jdk-headless
 
 apps:
   minion:
