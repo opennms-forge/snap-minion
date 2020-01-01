@@ -23,6 +23,8 @@ parts:
     source-checksum: sha512/d12d3fb6b535f8de07b61c554b6edfef89143e7ee5ba9cd9f4b8a89fe6eb3f2e161829c4ac8031af0661d4c21079256ed6a5a52cbd63f41357da1559e6e316c3
     stage-packages:
       - openjdk-11-jdk-headless
+    organize:
+      '*': opt/minion
 
 apps:
   minion:
