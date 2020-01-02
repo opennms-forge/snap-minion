@@ -18,7 +18,7 @@ architectures:
 apps:
   openms-minion:
     environment:
-      JAVA_HOME: "$SNAP/usr/lib/jvm/java-11-openjdk"
+      JAVA_HOME: "$SNAP/usr/lib/jvm/java-11-openjdk-amd64"
     command: |
       opt/minion/bin/karaf server
     daemon: simple
@@ -26,10 +26,12 @@ apps:
 parts:
   openjdk-11-jdk:
     plugin:  nil
-    stage-packages: 
+    stage-packages:
+    - ca-certificates-java
     - openjdk-11-jdk-headless
   opennms-minion:
     plugin: dump
     source: https://github.com/OpenNMS/opennms/releases/download/opennms-$SNAPCRAFT_PROJECT_VERSION-1/minion-$SNAPCRAFT_PROJECT_VERSION.tar.gz
+    #source: minion-$SNAPCRAFT_PROJECT_VERSION.tar.gz
     organize:
       '*' : opt/minion
