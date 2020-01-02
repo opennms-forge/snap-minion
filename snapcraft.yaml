@@ -11,10 +11,21 @@ description: |
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
+apps:
+  openms-minion:
+    environment:
+      JAVA_HOME: "$SNAP/usr/lib/jvm/java-11-openjdk"
+    command: |
+      opt/minion/bin/karaf server
+    daemon: simple
+
 parts:
+  openjdk-11-jdk:
+    plugin:  nil
+    stage-packages: 
+    - openjdk-11-jdk-headless
   opennms-minion:
     plugin: dump
-    source: ./minion-$SNAPCRAFT_PROJECT_VERSION.tar.gz
-    source-checksum: sha256/4d0790b80b64ccd0be6737ea308974db96a42c511e2b1a3653030088b48b174a
-    stage-packages:
-      - openjdk-11-jdk-headless
+    source: https://github.com/OpenNMS/opennms/releases/download/opennms-$SNAPCRAFT_PROJECT_VERSION-1/minion-$SNAPCRAFT_PROJECT_VERSION.tar.gz
+    organize:
+      '*' : opt/minion

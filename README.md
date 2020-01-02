@@ -13,4 +13,4 @@ I've set an alias for `snapcraft` with:
 alias snapcraft='docker run --rm -v $(pwd):/build -w /build opennms/snapcraft:18 snapcraft'
 ```
 
-Now you can run all the `snapcraft` commands within the `snap-minion` directory.
+You can now run all the `snapcraft` commands within the `snap-minion` directory.
