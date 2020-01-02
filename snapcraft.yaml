@@ -27,6 +27,7 @@ parts:
   openjdk-11-jdk:
     plugin:  nil
     stage-packages:
+    - ca-certificates
     - ca-certificates-java
     - openjdk-11-jdk-headless
   opennms-minion:
