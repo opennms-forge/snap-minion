@@ -14,13 +14,7 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 parts:
   opennms-minion:
     plugin: dump
-    source: https://github.com/OpenNMS/opennms/releases/download/opennms-$SNAPCRAFT_PROJECT_VERSION-1/minion-$SNAPCRAFT_PROJECT_VERSION.tar.gz
+    source: ./minion-$SNAPCRAFT_PROJECT_VERSION.tar.gz
     source-checksum: sha256/4d0790b80b64ccd0be6737ea308974db96a42c511e2b1a3653030088b48b174a
-    organize:
-      "*": opennms-minion
     stage-packages:
       - openjdk-11-jdk-headless
-
-apps:
-  opennms-minion:
-    command: opennms-minion/bin/karaf server
