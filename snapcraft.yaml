@@ -27,9 +27,18 @@ parts:
   openjdk-11-jdk:
     plugin:  nil
     stage-packages:
-    - ca-certificates
     - ca-certificates-java
     - openjdk-11-jdk-headless
+    override-build: |
+      unlink $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/blacklisted.certs
+      unlink $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/cacerts
+      unlink $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/default.policy
+      unkink $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/public_suffix_list.dat
+      cp $SNAPCRAFT_PART_INSTALL/etc/java-11-openjdk/security/blacklisted.certs $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/blacklisted.certs
+      cp $SNAPCRAFT_PART_INSTALL/etc/ssl/certs/java/cacerts $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/cacerts
+      cp $SNAPCRAFT_PART_INSTALL/etc/java-11-openjdk/security/default.policy $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/default.policy
+      cp $SNAPCRAFT_PART_INSTALL/etc/java-11-openjdk/security/public_suffix_list.dat $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/public_suffix_list.dat
+      snapcraftctl set-version "$VERSION"
   opennms-minion:
     plugin: dump
     source: https://github.com/OpenNMS/opennms/releases/download/opennms-$SNAPCRAFT_PROJECT_VERSION-1/minion-$SNAPCRAFT_PROJECT_VERSION.tar.gz
