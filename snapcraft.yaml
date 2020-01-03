@@ -33,7 +33,7 @@ parts:
       unlink $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/blacklisted.certs
       unlink $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/cacerts
       unlink $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/default.policy
-      unkink $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/public_suffix_list.dat
+      unlink $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/public_suffix_list.dat
       cp $SNAPCRAFT_PART_INSTALL/etc/java-11-openjdk/security/blacklisted.certs $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/blacklisted.certs
       cp $SNAPCRAFT_PART_INSTALL/etc/ssl/certs/java/cacerts $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/cacerts
       cp $SNAPCRAFT_PART_INSTALL/etc/java-11-openjdk/security/default.policy $SNAPCRAFT_PART_INSTALL/usr/lib/jvm/java-11-openjdk-amd64/lib/security/default.policy
